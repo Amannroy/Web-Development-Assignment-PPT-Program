@@ -1,0 +1,41 @@
+The execution context is a concept in JavaScript that defines the environment in which the code is executed. It includes variables, functions, and objects that are accessible during the execution of a piece of code. Each time a function is invoked or a block of code is executed, a new execution context is created.
+
+An execution context consists of three main components:
+
+Variable Environment: It contains all the variables declared within the current scope, including function arguments, local variables, and function declarations. The variable environment also holds a reference to the outer environment (i.e., the variables in the parent scope) to enable lexical scoping.
+
+Scope Chain: The scope chain is a list of variable environments that allows access to variables across different nested scopes. When a variable is referenced, JavaScript searches for it in the current variable environment, and if not found, it traverses up the scope chain until it finds the variable or reaches the global scope.
+
+This Value: The this value refers to the object that is currently executing the code. It can change dynamically depending on how a function is called (e.g., method invocation, constructor invocation, or global function invocation).
+
++-----------------------+
+|      Global Scope      |
+|                       |
+|  Variable Environment |
+|  Scope Chain          |
+|  This Value           |
++-----------------------+
+         |
+         |
+         | (Nested Execution Context)
+         |
+         V
++-----------------------+
+|   Function Scope #1    |
+|                       |
+|  Variable Environment |
+|  Scope Chain          |
+|  This Value           |
++-----------------------+
+         |
+         |
+         | (Nested Execution Context)
+         |
+         V
++-----------------------+
+|   Function Scope #2    |
+|                       |
+|  Variable Environment |
+|  Scope Chain          |
+|  This Value           |       
++-----------------------+
