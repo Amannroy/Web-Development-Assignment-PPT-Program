@@ -1,0 +1,203 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with Basic Validation</title>
+    <style>
+         body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: rgb(187, 241, 223);
+      text-align: center;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+    }
+
+    button[type="submit"] {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #45a049;
+    }
+    </style>
+</head>
+<body>
+    <h1>Basic Form Validation</h1>
+
+    <form id="myForm" onsubmit="validateForm(event)">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+        <span id="nameError" class="error"></span>
+    </div>
+
+    <div>
+        <label for="email">Email:</label>
+        <input type="text" id="email" required>
+        <span id="emailError" class="error"></span>
+    </div>
+    <div>
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" required>
+        <span id="phoneError" class="error"></span>
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+        <span id="passwordError" class="error"></span>
+    </div>
+    <div>
+        <label for="age">Age:</label>
+        <input type="number" id="age" required>
+        <span id="ageError" class="error"></span>
+    </div>
+
+    <div>
+        <label for="gender">Gender:</label>
+        <select id="gender" required>
+            <option value=""></option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+        <span id="genderError" class="error"></span>
+    </div>
+
+    <div>
+        <label for="date">Date:</label>
+        <input type="date" id="date" required>
+        <span id="dateError" class="error"></span>
+    </div>
+
+
+    <div>
+        <label for="color">Favorite Color:</label>
+        <input type="color" id="color" required>
+        <span id="colorError" class="error"></span>
+    </div>
+
+    <button type="submit">Submit</button>
+
+    </form>
+
+    <script>
+        function validateForm(event){
+            event.preventDefault();
+
+            clearErrors();
+
+            // Get form field values
+            let name = document.getElementById('name').values;
+            let email = document.getElementById('email').values;
+            let phone = document.getElementById('phone').values;
+            let password = document.getElementById('password').values;
+            let age = document.getElementById('age').values;
+            let gender = document.getElementById('gender').values;
+            let date = document.getElementById('date').values;
+            let color = document.getElementById('color').values;
+
+            // Validate each field
+            let isValid = true;
+
+            if(name === ''){
+                displayError('nameError', 'Name is required');
+                isValid = false;
+            }
+            if(email === ''){
+                displayError('emailError', 'Email is required');
+                isValid = false;
+            }else if(!isValidEmail(email)){
+                displayError('emailError', 'Invalid email format');
+                isValid = false;
+            }
+
+            if(phone === ''){
+                displayError('phoneError', 'Phone number is required');
+                isValid = false;
+            }else if(!isValidPhoneNumber(phone)){
+                displayError('phoneError', 'Invalid phone number format');
+                isValid = false;
+            }
+
+            if(password === ''){
+                displayError('passwordError', 'Password is required');
+                isValid = false;
+            }
+            if(age === '' || isNaN(age)){
+                displayError('ageError', 'Age must be a number');
+                isValid = false;
+            }
+            if(gender === ''){
+                displayError('genderError', 'Gender is required');
+                isValid = false;
+            }
+            if(date === ''){
+                displayError('colorError', 'Favorite color is required');
+                isValid = false;
+            }
+            
+            // Submit the form if valid
+            if(isValid){
+                document.getElementById('myForm').submit();
+            }
+        }
+
+        function displayError(elementId, errorMessage){
+            let errorElement = document.getElementById(elementId);
+            errorElement.innerHTML = errorMessage;
+        }
+        function clearErrors(){
+            let errorElements = document.getElementsByClassName('error');
+            for(let i=0;i<errorElements.length;i++){
+                errorElements[i].innerHTML = '';
+            }
+        }
+
+        function isValidEmail(email){
+            // Basic email validation using a regular expression
+            let emailPattern = /\S+@\S+\.\S+/;
+            return emailPattern.test(email);
+        }
+
+        function isValidPhoneNumber(phone){
+            // Basic phone number validation using a regular expression
+            let phonePattern = /^d{10}$/;
+            return phonePattern.test(phone);
+        }
+    </script>
+</body>
+</html>
