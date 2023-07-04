@@ -1,0 +1,131 @@
+<!-- Static: The default positioning behavior of elements is static. It means that elements are rendered in their normal order in the document flow.
+-->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>static-position</title>
+  <style>
+    .static-position {
+      position: static;
+    }
+  </style>
+</head>
+<body>
+  <div class="static-position">Static Position</div>
+  <div style="height: 1500px;"></div> 
+</body>
+</html> -->
+
+
+
+ <!-- Fixed: 
+Elements with a fixed position are positioned relative to the browser window and will not move when the page is scrolled. -->
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>fixed-position</title>
+  <style>
+    .fixed-position {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="fixed-position">Fixed Position</div>
+  <div style="height: 1500px;"></div> 
+</body>
+</html> -->
+
+
+
+<!-- 
+Sticky:
+Sticky positioning is a mix between relative and fixed positioning. The element is positioned relative to its normal position until it reaches a certain scroll threshold, after which it becomes fixed. -->
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>sticky-position</title>
+  <style>
+    .sticky-position {
+      position: sticky;
+      top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div class="sticky-position">Sticky Position</div>
+  <div style="height: 1500px;"></div> 
+</body>
+</html> -->
+
+
+<!-- Relative:
+Relative positioning allows you to position an element relative to its normal position in the document flow. It can be adjusted using the top, right, bottom, and left properties. -->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Relative position</title>
+  <style>
+    .container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      border: 2px solid #000;
+    }
+
+    .box {
+      position: relative;
+      top: 50px;
+      left: 50px;
+      width: 100px;
+      height: 100px;
+      background-color: #ff0000;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box"></div>
+  </div>
+</body>
+</html> -->
+
+
+<!-- Absolute positioning removes the element from the normal document flow and positions it relative to its closest positioned ancestor or the initial containing block. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      border: 2px solid #000;
+    }
+
+    .box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100px;
+      height: 100px;
+      background-color: #2ab81d;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box"></div>
+  </div>
+</body>
+</html>
